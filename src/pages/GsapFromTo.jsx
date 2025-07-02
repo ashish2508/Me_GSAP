@@ -13,6 +13,8 @@ const GsapFromTo = () => {
 			borderRadius: "100%",
 			duration: 2.5,
 			ease: "bounce.out",
+      repeat:-1,
+      yoyo:true,
 		});
 	}, []);
 	return (
