@@ -5,6 +5,36 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Me_GSAP</title>
+    <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Force background color as fallback */
+        html {
+            background-color: #667eea;
+        }
+    html, body {
+            height: 100%;
+            overflow-x: hidden;
+            /* Disable overscroll behavior */
+            overscroll-behavior: none;
+            overscroll-behavior-y: none;
+            /* Disable pull-to-refresh */
+            -webkit-overflow-scrolling: touch;
+        }
+      body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
+    </style>
   </head>
   <body>
     <div id="root"></div>
