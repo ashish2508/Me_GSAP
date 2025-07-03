@@ -1,22 +1,44 @@
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+import { useRef, useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const GsapScrollTrigger = () => {
-  // TODO: Implement the gsap scroll trigger
+  const scrollRef = useRef();
+
+  useEffect(() => {
+    const boxes = gsap.utils.toArray(scrollRef.current.children);
+    boxes.forEach((box) => {
+      gsap.to(box, {
+    x: 15*(boxes.indexOf(box) + 9),
+        rotate: 360,
+        scale: 1.5,
+        borderRadius: "100%",
+        scrollTrigger: {
+          trigger: box,
+          start: "top bottom",
+          end: "top 10%",
+          scrub: true,
+        },
+        ease: "power1.inOut",
+      });
+    });
+  }, { scope: scrollRef });
 
   return (
     <main>
       <h1>GsapScrollTrigger</h1>
-
       <p className="mt-5 text-gray-500">
         Gsap Scroll Trigger is a plugin that allows you to create animations
         that are triggered by the scroll position of the page.
       </p>
-
       <p className="mt-5 text-gray-500">
         With ScrollTrigger, you can define various actions to be triggered at
         specific scroll points, such as starting or ending an animation,
         scrubbing through animations as the user scrolls, pinning elements to
         the screen, and more.{" "}
       </p>
-
       <p className="mt-5 text-gray-500">
         Read more about the{" "}
         <a
@@ -28,12 +50,10 @@ const GsapScrollTrigger = () => {
         </a>{" "}
         method.
       </p>
-
       <div className="w-full h-[70vh] flex justify-center items-center flex-col">
         <p className="text-center text-gray-500">
           Scroll down to see the animation
         </p>
-
         <svg
           className="animate-bounce mt-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +70,7 @@ const GsapScrollTrigger = () => {
           <path d="M5 12l7 7 7-7" />
         </svg>
       </div>
-
-      <div className="mt-20 w-full h-screen">
+      <div className="mt-20 w-full h-screen" ref={scrollRef}>
         <div
           id="scroll-pink"
           className="scroll-box w-20 h-20 rounded-lg bg-pink-500"
